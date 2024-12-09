@@ -1,5 +1,4 @@
-// import { User } from "@/apis/user"; // use from turborepo instead
-import { User } from "@buddy-turborepo/shared";
+import { User } from "@/apis/user";
 
 import { firebaseAuth } from '@/lib/firebaseConfig';
 
