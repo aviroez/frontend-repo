@@ -6,7 +6,8 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { User } from '@/apis/user';
+// import { User } from "@/apis/user"; // use from turborepo instead
+import { User } from "@buddy-turborepo/shared";
 import { fetchUsers } from '@/apis/userApi';
 
 export default function TableUsers() {

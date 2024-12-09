@@ -1,4 +1,6 @@
-import { User } from "@/apis/user";
+// import { User } from "@/apis/user"; // use from turborepo instead
+import { User } from "@buddy-turborepo/shared";
+
 import { firebaseAuth } from '@/lib/firebaseConfig';
 
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLICT_BACKEND_API_URL || 'http://localhost:3500';
