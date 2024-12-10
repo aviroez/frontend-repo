@@ -14,7 +14,7 @@ const SignOutButton = () => {
 
     const handleSignOut = async () => {
         try {
-            await signOut(firebaseAuth);
+            await signOut(firebaseAuth!);
             dispatch(clearUser());
             router.push('/');
         } catch (error) {

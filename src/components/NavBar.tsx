@@ -33,7 +33,7 @@ function NavBar() {
     };
 
     React.useEffect(() => {
-        const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
+        const unsubscribe = onAuthStateChanged(firebaseAuth!, (user) => {
             if (user) {
 
             }

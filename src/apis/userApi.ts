@@ -6,7 +6,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLICT
 
 export const fetchUsers = async () => {
     try {
-        const token = await firebaseAuth.currentUser?.getIdToken()
+        const token = await firebaseAuth!.currentUser?.getIdToken()
         const response = await fetch(`${API_URL}/users`, {
             method: 'GET',
             headers: {
@@ -25,7 +25,7 @@ export const fetchUsers = async () => {
 
 export const fetchUserById = async (uid: string) => {
     try {
-        const token = await firebaseAuth.currentUser?.getIdToken()
+        const token = await firebaseAuth!.currentUser?.getIdToken()
         const response = await fetch(`${API_URL}/users/${uid}`, {
             method: 'GET',
             headers: {
@@ -44,7 +44,7 @@ export const fetchUserById = async (uid: string) => {
 
 export const updateUser = async (userData: User) => {
     try {
-        const token = await firebaseAuth.currentUser?.getIdToken()
+        const token = await firebaseAuth!.currentUser?.getIdToken()
         const response = await fetch(`${API_URL}/users`, {
             method: 'PUT',
             headers: {

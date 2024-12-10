@@ -53,7 +53,7 @@ export default function Profile() {
     };
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
+        const unsubscribe = onAuthStateChanged(firebaseAuth!, (user) => {
             if (user) {
                 fetchedUser(user?.uid);
             } else {

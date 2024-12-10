@@ -1,5 +1,8 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, connectAuthEmulator  } from "firebase/auth";
+import { initializeApp, FirebaseApp } from "firebase/app";
+import { getAuth, connectAuthEmulator, Auth } from "firebase/auth";
+
+let firebaseApp: FirebaseApp | null = null;
+let firebaseAuth: Auth | null = null;
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
@@ -12,12 +15,27 @@ const firebaseConfig = {
     measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID!
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+const createFirebaseApp = () => {
+  if (!firebaseApp) {
+    firebaseApp = initializeApp(firebaseConfig);
+  }
+  return firebaseApp;
+};
 
-const firebaseAuth = getAuth(firebaseApp);
+const createFirebaseAuth = () => {
+  if (!firebaseAuth && typeof window !== "undefined") {
+    firebaseAuth = getAuth(createFirebaseApp());
+    if (process.env.NEXT_PUBLIC_FIREBASE_AUTH_EMULATOR) {
+      connectAuthEmulator(firebaseAuth, process.env.NEXT_PUBLIC_FIREBASE_AUTH_EMULATOR, {
+        disableWarnings: true,
+      });
+    }
+  }
+  return firebaseAuth;
+};
 
-if (process.env.NEXT_PUBLIC_FIREBASE_AUTH_EMULATOR) {
-    connectAuthEmulator(firebaseAuth, process.env.NEXT_PUBLIC_FIREBASE_AUTH_EMULATOR, { disableWarnings: true });
-}
+firebaseApp = createFirebaseApp();
+
+firebaseAuth = createFirebaseAuth();
 
 export { firebaseApp, firebaseAuth };

@@ -15,7 +15,7 @@ export default function Home() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
+        const unsubscribe = onAuthStateChanged(firebaseAuth!, (user) => {
             if (user) {
                 dispatch(setUser({ uid: user.uid, email: user.email }));
             } else {

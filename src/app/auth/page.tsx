@@ -49,7 +49,7 @@ export default function LoginAuth() {
     const handleRegister = async (email: string, password: string) => {
         dispatch(setLoading(true));
         try {
-            const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+            const userCredential = await createUserWithEmailAndPassword(firebaseAuth!, email, password);
             const { uid, email: userEmail } = userCredential.user;
             dispatch(setUser({ uid, name, email: userEmail }));
         } catch (error: unknown) {
@@ -62,7 +62,7 @@ export default function LoginAuth() {
     const handleLogin = async (email: string, password: string) => {
         dispatch(setLoading(true));
         try {
-            const userCredential = await signInWithEmailAndPassword(firebaseAuth, email, password);
+            const userCredential = await signInWithEmailAndPassword(firebaseAuth!, email, password);
             const { uid, email: loggedInEmail } = userCredential.user;
             const userData = await fetchUserById(uid);
             if (userData.data) {
