@@ -13,8 +13,7 @@ import { fetchUserById } from "@/apis/userApi";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "@/lib/firebaseConfig";
 import { useRouter } from "next/navigation";
-// import { User } from "@/apis/user"; // use from turborepo instead
-import { User } from "@buddy-turborepo/shared";
+import { User } from "@/apis/user";
 import AlertDialog from "@/components/AlertDialog";
 
 export default function Profile() {
